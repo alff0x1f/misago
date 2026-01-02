@@ -80,6 +80,28 @@ You may skip `./dev init` and setup dev instance manually, running those command
 4. `docker compose up`: starts dev server
 
 
+### Запуск без docker
+
+```shell
+mise trust
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+
+# поднимаем только инфраструктуру
+docker compose up postgres redis mailpit  # или podman compose ...
+
+# в новом терминале пробрасываем переменные окружения для локального кода
+set -a; source docker-services.env; set +a
+
+./manage.py migrate
+./manage.py createsuperuser
+./manage.py runserver
+```
+
+Файл `docker-services.env` содержит тот же набор переменных, что и docker-compose (POSTGRES_*, `CELERY_BROKER_URL`, `EMAIL_HOST`, `EMAIL_PORT`).
+
 ### Frontend
 
 With exception of Admin Panel, Misago frontend relies heavily on React.js components backed by Django API. This application uses webpack for building.

@@ -92,7 +92,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "") or "en-us"
+LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "") or "ru-RU"
 
 TIME_ZONE = "UTC"
 
@@ -267,7 +267,7 @@ REST_FRAMEWORK = {
 
 # Configure Celery to use Redis as message broker.
 
-CELERY_BROKER_URL = "redis://redis:6379/0"
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://redis:6379/0")
 
 # Celery workers may leak the memory, eventually depriving the instance of resources.
 # This setting forces celery to stop worker, clean after it and create new one
@@ -341,8 +341,8 @@ MISAGO_PROFILE_FIELDS = [
 # Set dev instance to send e-mails to the mailpit
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "mailpit"
-EMAIL_PORT = "1025"
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "mailpit")
+EMAIL_PORT = os.environ.get("EMAIL_PORT", "1025")
 
 DEFAULT_FROM_EMAIL = "Misago <misago@example.com>"
 
@@ -352,3 +352,5 @@ DEFAULT_FROM_EMAIL = "Misago <misago@example.com>"
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": "misago.conf.debugtoolbar.enable_debug_toolbar"
 }
+
+LANGUAGE_CODE = "ru-RU"

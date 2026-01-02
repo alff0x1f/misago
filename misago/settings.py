@@ -242,3 +242,5 @@ MISAGO_PYGMENTS_LANGUAGES = (
 
 # For use in tests only
 MISAGO_PARSER_CLEAN_AST = True
+
+LANGUAGE_CODE = "ru-RU"
