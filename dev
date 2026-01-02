@@ -24,6 +24,10 @@ error() {
     echo -e "${RED}Error:${NORMAL} $1"
 }
 
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
 require_in_docker() {
     if [[ ! $IN_MISAGO_DOCKER = 1 ]]; then
         error "This command can only be ran inside the running Misago docker container."
@@ -43,24 +47,79 @@ wait_for_db() {
     done
 }
 
-# Check if user has docker compose
+CONTAINER_ENGINE="${CONTAINER_ENGINE:-}"
+COMPOSE_CMD_DISPLAY="docker compose"
+CONTAINER_COMPOSE=()
+
 if [[ ! $IN_MISAGO_DOCKER = 1 ]]; then
-    if ! docker version >/dev/null 2>&1; then
-        error "You need to have Docker installed running to use this tool."
+    if [[ -z $CONTAINER_ENGINE ]]; then
+        if command_exists docker; then
+            CONTAINER_ENGINE="docker"
+        elif command_exists podman; then
+            CONTAINER_ENGINE="podman"
+        fi
+    fi
+
+    if [[ -z $CONTAINER_ENGINE ]]; then
+        error "You need to have Docker or Podman installed and running to use this tool."
         echo
-        echo "Docker release for your system can be downloaded for free from this page:"
+        echo "Docker release for your system can be downloaded for free from:"
         echo "https://www.docker.com/get-started"
         echo
-        exit 1
-    elif ! docker compose version >/dev/null 2>&1; then
-        error "You need to have Docker Compose plugin installed to use this tool."
-        echo
-        echo "Guide for installing Docker Compose plugin on your system can be found on this page:"
-        echo "https://docs.docker.com/compose/install/"
+        echo "Podman installation docs are available at:"
+        echo "https://podman.io/docs/installation"
         echo
         exit 1
     fi
+
+    if [[ $CONTAINER_ENGINE = "docker" ]]; then
+        if ! docker version >/dev/null 2>&1; then
+            error "Docker is not available. Please install and start Docker to continue."
+            exit 1
+        fi
+        if ! docker compose version >/dev/null 2>&1; then
+            error "You need to have Docker Compose plugin installed to use this tool."
+            echo
+            echo "Guide for installing Docker Compose plugin on your system can be found on this page:"
+            echo "https://docs.docker.com/compose/install/"
+            echo
+            exit 1
+        fi
+        CONTAINER_COMPOSE=("docker" "compose")
+        COMPOSE_CMD_DISPLAY="docker compose"
+    elif [[ $CONTAINER_ENGINE = "podman" ]]; then
+        if ! podman version >/dev/null 2>&1; then
+            error "Podman is not available. Please install Podman to continue."
+            exit 1
+        fi
+
+        if podman compose version >/dev/null 2>&1; then
+            CONTAINER_COMPOSE=("podman" "compose")
+            COMPOSE_CMD_DISPLAY="podman compose"
+        elif command_exists podman-compose; then
+            CONTAINER_COMPOSE=("podman-compose")
+            COMPOSE_CMD_DISPLAY="podman-compose"
+        else
+            error "Podman Compose is not available. Please install either \"podman compose\" or \"podman-compose\"."
+            echo
+            echo "See https://docs.podman.io/en/latest/markdown/podman-compose.1.html for installation instructions."
+            echo
+            exit 1
+        fi
+    else
+        error "Unsupported CONTAINER_ENGINE value: $CONTAINER_ENGINE"
+        exit 1
+    fi
 fi
+
+compose() {
+    if [[ ${#CONTAINER_COMPOSE[@]} = 0 ]]; then
+        error "Container compose command is not available in this environment."
+        exit 1
+    fi
+
+    "${CONTAINER_COMPOSE[@]}" "$@"
+}
 
 # Commands
 intro() {
@@ -75,7 +134,7 @@ intro() {
     echo "    ${BOLD}rebuild${NORMAL}           rebuild docker containers."
     echo "    ${BOLD}reset${NORMAL}             run clear followed by init."
     echo
-    echo "    Both init and rebuild args can be followed with any number of extra args and options that should be appended to docker compose build."
+    echo "    Both init and rebuild args can be followed with any number of extra args and options that should be appended to ${COMPOSE_CMD_DISPLAY} build."
     echo
     echo "Testing:"
     echo
@@ -100,7 +159,7 @@ intro() {
     echo
     echo "    ${BOLD}manage.py${NORMAL}         runs \"python manage.py\" inside docker."
     echo "    ${BOLD}bash${NORMAL}              starts bash session inside running Misago container."
-    echo "    ${BOLD}run${NORMAL}               runs \"docker compose run --rm misago\"."
+    echo "    ${BOLD}run${NORMAL}               runs \"${COMPOSE_CMD_DISPLAY} run --rm misago\"."
     echo "    ${BOLD}psql${NORMAL}              runs psql connected to development database."
     echo "    ${BOLD}pyfmt${NORMAL}             runs isort + black on python code."
     echo "    ${BOLD}loaddevfixture${NORMAL}    populates database with pre-made data for dev."
@@ -135,9 +194,9 @@ init() {
         fi
     done
     
-    docker compose stop
-    docker compose build --pull --force-rm "${@:2}"
-    docker compose run --rm misago ./dev init_in_docker
+    compose stop
+    compose build --pull --force-rm "${@:2}"
+    compose run --rm misago ./dev init_in_docker
 }
 
 # Initialization step that has to occur inside docker
@@ -160,7 +219,7 @@ after_init_message() {
     echo
     echo "You can now start the development server using:"
     echo
-    echo "    docker compose up"
+    echo "    ${COMPOSE_CMD_DISPLAY} up"
     echo
     echo "Running server will be available in the browser under the http://127.0.0.1:${port_django} address."
     echo
@@ -238,8 +297,8 @@ clear() {
 
     read confirmation
     if [[ $confirmation = "y" ]]; then
-        docker compose stop
-        docker compose down --remove-orphans
+        compose stop
+        compose down --remove-orphans
         find $devproject_path/media -mindepth 1 ! -name '.gitignore' -delete
         find $devproject_path/userdata -mindepth 1 ! -name '.gitignore' -delete
     else
@@ -258,8 +317,8 @@ reset() {
 
     read confirmation
     if [[ $confirmation = "y" ]]; then
-        docker compose stop
-        docker compose down --remove-orphans
+        compose stop
+        compose down --remove-orphans
         find $devproject_path/media -mindepth 1 ! -name '.gitignore' -delete
         find $devproject_path/userdata -mindepth 1 ! -name '.gitignore' -delete
         init $@
@@ -270,18 +329,18 @@ reset() {
 
 # Rebuild docker containers
 rebuild() {
-    docker compose stop
-    docker compose build --pull --force-rm "${@:2}"
+    compose stop
+    compose build --pull --force-rm "${@:2}"
 }
 
 # Run tests suite
 test() {
-    docker compose run --rm misago pytest "${@:2}"
+    compose run --rm misago pytest "${@:2}"
 }
 
 # Make plugin's messages
 plugin_makemessages() {
-    docker compose run --rm --no-deps misago ./dev plugin_makemessages_in_docker $1 $2
+    compose run --rm --no-deps misago ./dev plugin_makemessages_in_docker $1 $2
 }
 
 # Docker part of plugin's makemessages
@@ -310,7 +369,7 @@ plugin_makemessages_in_docker() {
 
 # Compile plugin's messages
 plugin_compilemessages() {
-    docker compose run --rm --no-deps misago ./dev plugin_compilemessages_in_docker $1
+    compose run --rm --no-deps misago ./dev plugin_compilemessages_in_docker $1
 }
 
 # Docker part of plugin's compile messages
@@ -327,7 +386,7 @@ plugin_compilemessages_in_docker() {
 
 # Make messages
 makemessages() {
-    docker compose run --rm --no-deps misago ./dev makemessages_in_docker $1
+    compose run --rm --no-deps misago ./dev makemessages_in_docker $1
 }
 
 # Docker part of makemessages
@@ -351,7 +410,7 @@ makemessages_in_docker() {
 
 # Compile messages
 compilemessages() {
-    docker compose run --rm --no-deps misago ./dev compilemessages_in_docker
+    compose run --rm --no-deps misago ./dev compilemessages_in_docker
 }
 
 # Docker part of compile messages
@@ -374,22 +433,27 @@ txpush() {
 
 # Shortcut for starting bash session in running container
 run_bash() {
-    docker exec -it misago_misago_1 bash
+    if [[ -z $CONTAINER_ENGINE ]]; then
+        error "Container engine command is not available in this environment."
+        exit 1
+    fi
+
+    $CONTAINER_ENGINE exec -it misago_misago_1 bash
 }
 
-# Shortcut for docker compose run --rm misago python manage.py
+# Shortcut for compose run --rm misago python manage.py
 run_managepy() {
-    docker compose run --rm misago python manage.py "${@:2}"
+    compose run --rm misago python manage.py "${@:2}"
 }
 
-# Shortcut for docker compose run --rm misago...
+# Shortcut for compose run --rm misago...
 docker_run() {
-    docker compose run --rm misago "${@:2}"
+    compose run --rm misago "${@:2}"
 }
 
 # Shortcut for psql
 run_psql() {
-    docker compose run --rm misago ./dev psql_in_docker
+    compose run --rm misago ./dev psql_in_docker
 }
 
 # Docker part of psql shortcut
@@ -400,21 +464,21 @@ psql_in_docker() {
 
 # Shortcut for creating small dev forum
 create_fake_data() {
-    docker compose run --rm misago python manage.py createfakecategories 7
-    docker compose run --rm misago python manage.py createfakecategories 12 1
-    docker compose run --rm misago python manage.py createfakehistory 600
+    compose run --rm misago python manage.py createfakecategories 7
+    compose run --rm misago python manage.py createfakecategories 12 1
+    compose run --rm misago python manage.py createfakehistory 600
 }
 
 # Shortcut for creating big dev forum
 create_fake_bigdata() {
-    docker compose run --rm misago python manage.py createfakecategories 48
-    docker compose run --rm misago python manage.py createfakecategories 24 1
-    docker compose run --rm misago python manage.py createfakehistory 2190 120
+    compose run --rm misago python manage.py createfakecategories 48
+    compose run --rm misago python manage.py createfakecategories 24 1
+    compose run --rm misago python manage.py createfakehistory 2190 120
 }
 
 # Shortcut for pip compile new requirements.txt
 pip_compile() {
-    docker compose run --rm misago pip-compile --output-file=requirements.txt requirements.in
+    compose run --rm misago pip-compile --output-file=requirements.txt requirements.in
 }
 
 # Command dispatcher
@@ -475,7 +539,7 @@ if [[ $1 ]]; then
         isort -rc misago
         black devproject misago
     elif [[ $1 = "loaddevfixture" ]]; then
-        docker compose run --rm misago python manage.py loaddevfixture
+        compose run --rm misago python manage.py loaddevfixture
     elif [[ $1 = "fakedata" ]]; then
         create_fake_data
     elif [[ $1 = "fakebigdata" ]]; then

@@ -46,6 +46,7 @@ pylint.txt
 .mr.developer.cfg
 .project
 .pydevproject
+.venv
 
 # IDEs
 .idea/
