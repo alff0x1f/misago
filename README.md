@@ -102,6 +102,15 @@ set -a; source docker-services.env; set +a
 
 Файл `docker-services.env` содержит тот же набор переменных, что и docker-compose (POSTGRES_*, `CELERY_BROKER_URL`, `EMAIL_HOST`, `EMAIL_PORT`).
 
+### Перевод
+
+Извлечение строк для перевода:
+
+./dev makemessages ru
+
+После правки выполните ./dev compilemessages, чтобы Django сгенерировал бинарные файлы. 
+Затем перезапустите контейнер/приложение, и новая строка появится на сайте.
+
 ### Frontend
 
 With exception of Admin Panel, Misago frontend relies heavily on React.js components backed by Django API. This application uses webpack for building.

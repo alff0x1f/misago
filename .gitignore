@@ -57,5 +57,8 @@ pylint.txt
 *.log
 *.pot
 
+# Translations
+*.mo
+
 # Docker Compose Override
 docker-compose.override.yml
