@@ -6,7 +6,6 @@
 # Translators:
 # KGB1st, 2025
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -66,12 +65,12 @@ msgstr ""
 #: account/forms.py:115
 msgctxt "account settings preferences"
 msgid "Threads I am starting"
-msgstr ""
+msgstr "Темы, которые я начал"
 
 #: account/forms.py:122
 msgctxt "account settings preferences"
 msgid "Threads I am replying to"
-msgstr ""
+msgstr "Темы, где я ответил"
 
 #: account/forms.py:129
 msgctxt "account settings preferences"
@@ -94,12 +93,9 @@ msgid "Private threads invitations from users I follow"
 msgstr ""
 
 #: account/forms.py:155
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads moderator"
 msgctxt "account settings preferences"
 msgid "Private threads invitations from other users"
-msgstr "Эксперт частных тем"
+msgstr "Приглашения в приватные темы от других пользователей"
 
 #: account/forms.py:227
 msgctxt "account username form"
@@ -187,9 +183,6 @@ msgid "Sign in to change your settings"
 msgstr ""
 
 #: account/views/settings.py:138
-#, fuzzy
-#| msgctxt "admin form"
-#| msgid "Form contains errors."
 msgid "Form contains errors"
 msgstr "Форма содержит ошибки."
 
@@ -214,12 +207,10 @@ msgid "Password changed"
 msgstr ""
 
 #: account/views/settings.py:288
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been changed."
+#, python-format
 msgctxt "password changed email subject"
 msgid "Your password on the %(forum_name)s forums has been changed"
-msgstr "Роль \"%(name)s\" была изменена."
+msgstr "Ваш пароль на форуме %(forum_name)s был изменён."
 
 #: account/views/settings.py:304
 msgctxt "account settings email confirm"
@@ -365,7 +356,7 @@ msgstr "Анонимный пользователь"
 #: admin/admin.py:12
 msgctxt "admin node"
 msgid "Dashboard"
-msgstr "Доска"
+msgstr "Панель управления"
 
 #: admin/admin.py:14
 msgctxt "admin node"
@@ -375,15 +366,12 @@ msgstr ""
 #: admin/admin.py:20
 msgctxt "admin node"
 msgid "Categories"
-msgstr ""
+msgstr "Разделы"
 
 #: admin/admin.py:26
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin node"
 msgid "Moderators"
-msgstr "Эксперт"
+msgstr "Модераторы"
 
 #: admin/admin.py:32
 msgctxt "admin node"
@@ -506,12 +494,10 @@ msgid "Selected attachments have been deleted."
 msgstr ""
 
 #: admin/attachments/views.py:91
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
+#, python-format
 msgctxt "admin attachments"
 msgid "Attachment \"%(name)s\" has been deleted."
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Вложение \"%(name)s\" было удалено."
 
 #: admin/auth.py:31
 msgctxt "admin auth"
@@ -862,12 +848,9 @@ msgid "Name"
 msgstr ""
 
 #: admin/groups/forms.py:22 admin/groups/forms.py:105
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "admin group form"
 msgid "Copy permissions from"
-msgstr "Разрешения"
+msgstr "Скопировать разрешения из"
 
 #: admin/groups/forms.py:25
 msgctxt "admin group form"
@@ -1014,28 +997,19 @@ msgid ""
 msgstr ""
 
 #: admin/groups/forms.py:156
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "admin group permissions form"
 msgid "Can use private threads"
-msgstr "Частные темы"
+msgstr "Может использовать приватные темы"
 
 #: admin/groups/forms.py:160
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "admin group permissions form"
 msgid "Can start new private threads"
-msgstr "Частные темы"
+msgstr "Может создавать приватные темы"
 
 #: admin/groups/forms.py:164
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Member"
 msgctxt "admin group permissions form"
 msgid "Members limit"
-msgstr "Участник"
+msgstr "Лимит участников"
 
 #: admin/groups/forms.py:167
 msgctxt "admin group permissions form"
@@ -1229,28 +1203,19 @@ msgid ""
 msgstr ""
 
 #: admin/groups/views.py:38
-#, fuzzy
-#| msgctxt "admin roles"
-#| msgid "Requested role does not exist."
 msgctxt "admin groups"
 msgid "Requested group does not exist."
-msgstr "Запрашиваемая роль не существует."
+msgstr "Запрашиваемая группа не существует."
 
 #: admin/groups/views.py:80
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been changed."
 msgctxt "admin groups"
 msgid "\"%(name)s\" group has been created."
-msgstr "Роль \"%(name)s\" была изменена."
+msgstr "Группа \"%(name)s\" создана."
 
 #: admin/groups/views.py:102
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
 msgctxt "admin groups"
 msgid "\"%(name)s\" group has been updated."
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Группа \"%(name)s\" обновлена."
 
 #: admin/groups/views.py:165
 msgctxt "admin groups"
@@ -1283,20 +1248,14 @@ msgid ""
 msgstr ""
 
 #: admin/groups/views.py:248
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
 msgctxt "admin groups"
 msgid "\"%(name)s\" group has been deleted."
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Группа \"%(name)s\" удалена."
 
 #: admin/groups/views.py:258
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" is special role and can't be deleted."
 msgctxt "admin groups"
 msgid "\"%(name)s\" group is already the default."
-msgstr "Особая роль \"%(name)s\" не может быть удалена."
+msgstr "Группа \"%(name)s\" уже назначена группой по умолчанию."
 
 #: admin/groups/views.py:264
 #, python-format
@@ -1312,20 +1271,14 @@ msgid ""
 msgstr ""
 
 #: admin/groups/views.py:281
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
 msgctxt "admin groups"
 msgid "\"%(name)s\" group has been made a default."
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Группа \"%(name)s\" назначена группой по умолчанию."
 
 #: admin/moderators/forms.py:13
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators form"
 msgid "Moderator type"
-msgstr "Эксперт"
+msgstr "Тип модератора"
 
 #: admin/moderators/forms.py:15
 msgctxt "admin moderators form type choice"
@@ -1360,36 +1313,24 @@ msgid ""
 msgstr ""
 
 #: admin/moderators/forms.py:50
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators form"
 msgid "Moderated categories"
-msgstr "Эксперт"
+msgstr "Модерируемые разделы"
 
 #: admin/moderators/forms.py:55
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads moderator"
 msgctxt "admin moderators form"
 msgid "Is private threads moderator"
-msgstr "Эксперт частных тем"
+msgstr "Является модератором приватных тем"
 
 #: admin/moderators/views.py:22
-#, fuzzy
-#| msgctxt "admin roles"
-#| msgid "Requested role does not exist."
 msgctxt "admin moderators"
 msgid "Requested moderator does not exist."
-msgstr "Запрашиваемая роль не существует."
+msgstr "Запрашиваемый модератор не существует."
 
 #: admin/moderators/views.py:58
-#, fuzzy
-#| msgctxt "admin roles"
-#| msgid "Requested role does not exist."
 msgctxt "admin moderators"
 msgid "Requested user or group does not exist."
-msgstr "Запрашиваемая роль не существует."
+msgstr "Запрашиваемый пользователь или группа не существуют."
 
 #: admin/moderators/views.py:92
 #, python-format
@@ -1407,12 +1348,10 @@ msgid ""
 msgstr ""
 
 #: admin/moderators/views.py:110
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
+#, python-format
 msgctxt "admin moderators"
 msgid "\"%(name)s\" moderator has been updated."
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Модератор \"%(name)s\" обновлён."
 
 #: admin/moderators/views.py:117
 #, python-format
@@ -1429,12 +1368,10 @@ msgid ""
 msgstr ""
 
 #: admin/moderators/views.py:137
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
+#, python-format
 msgctxt "admin moderators"
 msgid "\"%(name)s\" moderator has been deleted."
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Модератор \"%(name)s\" удалён."
 
 #: admin/templates/misago/admin/attachments/list.html:7
 msgctxt "admin attachments list"
@@ -1733,7 +1670,7 @@ msgstr ""
 #: admin/templates/misago/admin/categories/list.html:59
 msgctxt "admin categories"
 msgid "Go to category"
-msgstr ""
+msgstr "К разделам"
 
 #: admin/templates/misago/admin/categories/list.html:67
 msgctxt "admin categories"
@@ -1750,42 +1687,39 @@ msgstr ""
 #: templates/misago/admin/categoryroles/categoryroles.html:31
 msgctxt "admin categories"
 msgid "Edit category"
-msgstr ""
+msgstr "Изменить раздел"
 
 #: admin/templates/misago/admin/categories/list.html:114
 msgctxt "admin categories"
 msgid "Delete category"
-msgstr ""
+msgstr "Удалить раздел"
 
 #: admin/templates/misago/admin/categories/list.html:124
 msgctxt "admin categories"
 msgid "No categories are set."
-msgstr ""
+msgstr "Разделы не установлены."
 
 #: admin/templates/misago/admin/categories/permissions.html:6
 #: admin/templates/misago/admin/categories/permissions.html:35
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "admin category form"
 msgid "Category permissions"
-msgstr "Разрешения"
+msgstr "Разрешения раздела"
 
 #: admin/templates/misago/admin/categories/permissions.html:40
 msgctxt "admin category form"
 msgid "Category"
-msgstr ""
+msgstr "Разделы"
 
 #: admin/templates/misago/admin/dashboard/analytics.html:7
 #: admin/templates/misago/admin/dashboard/index.html:44
 msgctxt "admin analytics"
 msgid "Analytics"
-msgstr ""
+msgstr "Аналитика"
 
 #: admin/templates/misago/admin/dashboard/analytics.html:14
 msgctxt "admin analytics"
 msgid "Loading..."
-msgstr ""
+msgstr "Загрузка..."
 
 #: admin/templates/misago/admin/dashboard/checks.html:5
 msgctxt "admin checks title"
@@ -1795,7 +1729,7 @@ msgstr ""
 #: admin/templates/misago/admin/dashboard/checks.html:12
 msgctxt "admin version check"
 msgid "Loading..."
-msgstr ""
+msgstr "Загрузка..."
 
 #: admin/templates/misago/admin/dashboard/checks.html:16
 #: admin/templates/misago/admin/dashboard/index.html:36
@@ -1815,7 +1749,7 @@ msgstr ""
 #: admin/templates/misago/admin/dashboard/checks.html:30
 msgctxt "admin debug check"
 msgid "The site is running in DEBUG mode."
-msgstr ""
+msgstr "Cайт работает в режиме ОТЛАДКИ."
 
 #: admin/templates/misago/admin/dashboard/checks.html:31
 msgctxt "admin debug check"
@@ -1994,22 +1928,22 @@ msgstr ""
 #: admin/templates/misago/admin/dashboard/totals.html:15
 msgctxt "admin dashboard totals"
 msgid "Threads:"
-msgstr ""
+msgstr "Темы:"
 
 #: admin/templates/misago/admin/dashboard/totals.html:19
 msgctxt "admin dashboard totals"
 msgid "Posts:"
-msgstr ""
+msgstr "Cообщений:"
 
 #: admin/templates/misago/admin/dashboard/totals.html:23
 msgctxt "admin dashboard totals"
 msgid "Attachments:"
-msgstr ""
+msgstr "Вложений:"
 
 #: admin/templates/misago/admin/dashboard/totals.html:27
 msgctxt "admin dashboard totals"
 msgid "Attachments size:"
-msgstr ""
+msgstr "Размер вложений:"
 
 #: admin/templates/misago/admin/dashboard/totals.html:31
 msgctxt "admin dashboard totals"
@@ -2225,12 +2159,9 @@ msgstr ""
 
 #: admin/templates/misago/admin/groups/categories.html:6
 #: admin/templates/misago/admin/groups/categories.html:29
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "admin group form"
 msgid "Category permissions"
-msgstr "Разрешения"
+msgstr "Разрешения раздела"
 
 #: admin/templates/misago/admin/groups/categories.html:22
 #: admin/templates/misago/admin/groups/list.html:97
@@ -2247,12 +2178,9 @@ msgstr ""
 #: admin/templates/misago/admin/groups/edit.html:22
 #: admin/templates/misago/admin/groups/list.html:92
 #: admin/templates/misago/admin/groups/list.html:128
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "admin groups"
 msgid "Category permissions"
-msgstr "Разрешения"
+msgstr "Разрешения раздела"
 
 #: admin/templates/misago/admin/groups/edit.html:29
 msgctxt "admin group form"
@@ -2270,9 +2198,6 @@ msgid "Display and appearance"
 msgstr ""
 
 #: admin/templates/misago/admin/groups/edit.html:67
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "admin group form"
 msgid "Permissions"
 msgstr "Разрешения"
@@ -2283,12 +2208,9 @@ msgid "Posting"
 msgstr ""
 
 #: admin/templates/misago/admin/groups/edit.html:87
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "admin group permissions form"
 msgid "Private threads"
-msgstr "Частные темы"
+msgstr "Приватные темы"
 
 #: admin/templates/misago/admin/groups/edit.html:97
 msgctxt "admin group permissions form"
@@ -2341,12 +2263,9 @@ msgid "CSS suffix"
 msgstr ""
 
 #: admin/templates/misago/admin/groups/list.html:22
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Member"
 msgctxt "admin groups list"
 msgid "Members"
-msgstr "Участник"
+msgstr "Участники"
 
 #: admin/templates/misago/admin/groups/list.html:42
 msgctxt "admin groups"
@@ -2511,20 +2430,14 @@ msgstr ""
 
 #: admin/templates/misago/admin/moderators/form.html:9
 #: admin/templates/misago/admin/moderators/form.html:26
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderator form"
 msgid "New moderator"
-msgstr "Эксперт"
+msgstr "Новый модератор"
 
 #: admin/templates/misago/admin/moderators/form.html:24
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderator form"
 msgid "Edit moderator"
-msgstr "Эксперт"
+msgstr "Редактировать модератора"
 
 #: admin/templates/misago/admin/moderators/form.html:34
 msgctxt "admin moderator form"
@@ -2537,12 +2450,9 @@ msgid "Categories"
 msgstr ""
 
 #: admin/templates/misago/admin/moderators/form.html:50
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "admin moderator form"
 msgid "Private threads"
-msgstr "Частные темы"
+msgstr "Приватные темы"
 
 #: admin/templates/misago/admin/moderators/form.html:53
 msgctxt "admin moderator form"
@@ -2552,28 +2462,19 @@ msgid ""
 msgstr ""
 
 #: admin/templates/misago/admin/moderators/form.html:70
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads moderator"
 msgctxt "admin moderator form action"
 msgid "Create moderator"
-msgstr "Эксперт частных тем"
+msgstr "Создать модератора"
 
 #: admin/templates/misago/admin/moderators/list.html:9
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators"
 msgid "New moderator"
-msgstr "Эксперт"
+msgstr "Новый модератор"
 
 #: admin/templates/misago/admin/moderators/list.html:17
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators list"
 msgid "Moderator"
-msgstr "Эксперт"
+msgstr "Модератор"
 
 #: admin/templates/misago/admin/moderators/list.html:27
 msgctxt "admin moderators list item"
@@ -2610,28 +2511,19 @@ msgid "Protected"
 msgstr ""
 
 #: admin/templates/misago/admin/moderators/list.html:63
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators"
 msgid "Edit moderator"
-msgstr "Эксперт"
+msgstr "Редактировать модератора"
 
 #: admin/templates/misago/admin/moderators/list.html:76
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators"
 msgid "Delete moderator"
-msgstr "Эксперт"
+msgstr "Удалить модератора"
 
 #: admin/templates/misago/admin/moderators/list.html:92
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators form"
 msgid "New moderator"
-msgstr "Эксперт"
+msgstr "Новый модератор"
 
 #: admin/templates/misago/admin/moderators/list.html:93
 msgctxt "admin dialog"
@@ -2639,12 +2531,9 @@ msgid "Close"
 msgstr ""
 
 #: admin/templates/misago/admin/moderators/list.html:109
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "admin moderators form"
 msgid "Add moderator"
-msgstr "Эксперт"
+msgstr "Добавить модератора"
 
 #: admin/templates/misago/admin/moderators/list.html:123
 msgctxt "admin moderators"
@@ -2703,12 +2592,9 @@ msgid "Log out completely"
 msgstr ""
 
 #: admin/templates/misago/admin/select/user.html:10
-#, fuzzy
-#| msgctxt "admin auth"
-#| msgid "Your admin session has been closed."
 msgctxt "admin select user"
 msgid "No matching users have been found."
-msgstr "Ваш сессия администратора была закрыта."
+msgstr "Подходящих пользователей не найдено."
 
 #: admin/views/auth.py:40
 msgctxt "admin auth"
@@ -2948,12 +2834,10 @@ msgid ""
 msgstr ""
 
 #: attachments/views.py:161
-#, fuzzy, python-format
-#| msgctxt "admin roles"
-#| msgid "Role \"%(name)s\" has been deleted."
+#, python-format
 msgctxt "attachment delete page"
 msgid "Attachment \"%(name)s\" deleted"
-msgstr "Роль \"%(name)s\" была удалена."
+msgstr "Вложение \"%(name)s\" удалено"
 
 #: attachments/views.py:241
 msgctxt "attachments upload"
@@ -4547,22 +4431,22 @@ msgstr ""
 #: forumindex/menus.py:15
 msgctxt "main menu item"
 msgid "Threads"
-msgstr ""
+msgstr "Темы"
 
 #: forumindex/menus.py:20
 msgctxt "main menu item"
 msgid "Categories"
-msgstr ""
+msgstr "Разделы"
 
 #: forumindex/views.py:33
 msgctxt "index view choice"
 msgid "Threads"
-msgstr ""
+msgstr "Темы"
 
 #: forumindex/views.py:38
 msgctxt "index view choice"
 msgid "Categories"
-msgstr ""
+msgstr "Разделы"
 
 #: graphql/admin/versioncheck.py:29
 msgctxt "admin version check"
@@ -5068,12 +4952,9 @@ msgid "Move"
 msgstr ""
 
 #: moderation/threads.py:42
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads bulk moderation action"
 msgid "Move threads"
-msgstr "Частные темы"
+msgstr "Переместить темы"
 
 #: moderation/threads.py:59
 msgctxt "threads bulk open"
@@ -5088,7 +4969,7 @@ msgstr ""
 #: moderation/threads.py:102
 msgctxt "threads bulk open"
 msgid "Threads closed"
-msgstr ""
+msgstr "Темы закрыты"
 
 #: moderation/threads.py:110
 msgctxt "threads bulk moderation action"
@@ -5533,12 +5414,9 @@ msgid "`inline code`"
 msgstr ""
 
 #: parser/views.py:158
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Can't be blocked"
 msgctxt "formatting help"
 msgid "Code block"
-msgstr "Не может быть заблокирован"
+msgstr "Блок кода"
 
 #: parser/views.py:159
 msgctxt "formatting help"
@@ -5639,20 +5517,14 @@ msgid "Browse contents"
 msgstr ""
 
 #: permissions/admin.py:25
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "category permission"
 msgid "Start threads"
-msgstr "Частные темы"
+msgstr "Создавать темы"
 
 #: permissions/admin.py:30
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "category permission"
 msgid "Reply threads"
-msgstr "Частные темы"
+msgstr "Отвечать в темах"
 
 #: permissions/admin.py:35
 msgctxt "category permission"
@@ -5706,12 +5578,9 @@ msgid "Never"
 msgstr ""
 
 #: permissions/enums.py:39
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "upload attachments permission"
 msgid "In threads and private threads"
-msgstr "Частные темы"
+msgstr "В темах и приватных темах"
 
 #: permissions/enums.py:44
 msgctxt "upload attachments permission"
@@ -5754,20 +5623,14 @@ msgid "You must be signed in to access your notifications."
 msgstr ""
 
 #: permissions/panels.py:8
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar"
 msgid "Misago User Permissions"
-msgstr "Разрешения"
+msgstr "Права пользователя Misago"
 
 #: permissions/panels.py:9
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar"
 msgid "Misago Permissions"
-msgstr "Разрешения"
+msgstr "Права Misago"
 
 #: permissions/polls.py:35
 msgctxt "polls permission error"
@@ -5810,12 +5673,9 @@ msgid "You can't edit polls that have ended."
 msgstr ""
 
 #: permissions/polls.py:143
-#, fuzzy
-#| msgctxt "admin auth"
-#| msgid "Your admin session has been closed."
 msgctxt "threads permission error"
 msgid "You can't edit polls that are closed."
-msgstr "Ваш сессия администратора была закрыта."
+msgstr "Вы не можете редактировать закрытые опросы."
 
 #: permissions/polls.py:155
 #, python-format
@@ -5939,12 +5799,9 @@ msgid "You must be signed in to use private threads."
 msgstr ""
 
 #: permissions/privatethreads.py:48
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "private threads permission error"
 msgid "You can't use private threads."
-msgstr "Частные темы"
+msgstr "Вы не можете использовать приватные темы."
 
 #: permissions/privatethreads.py:64
 msgctxt "private threads permission error"
@@ -6090,41 +5947,26 @@ msgid "User ID"
 msgstr ""
 
 #: permissions/templates/misago/permissions_panel.html:19
-#, fuzzy
-#| msgctxt "debug toolbar"
-#| msgid "Anonymous user"
 msgctxt "debug toolbar user permissions"
 msgid "Anonymous"
-msgstr "Анонимный пользователь"
+msgstr "Аноним"
 
 #: permissions/templates/misago/permissions_panel.html:24
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar user permissions"
 msgid "Accessed permissions"
-msgstr "Разрешения"
+msgstr "Полученные разрешения"
 
 #: permissions/templates/misago/permissions_panel.html:27
-#, fuzzy
-#| msgctxt "admin yesno switch"
-#| msgid "Yes"
 msgctxt "debug toolbar user permissions"
 msgid "Yes"
 msgstr "Да"
 
 #: permissions/templates/misago/permissions_panel.html:29
-#, fuzzy
-#| msgctxt "admin yesno switch"
-#| msgid "No"
 msgctxt "debug toolbar user permissions"
 msgid "No"
 msgstr "Нет"
 
 #: permissions/templates/misago/permissions_panel.html:36
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar user permissions"
 msgid "Permissions"
 msgstr "Разрешения"
@@ -6132,28 +5974,19 @@ msgstr "Разрешения"
 #: permissions/templates/misago/permissions_panel.html:41
 #: permissions/templates/misago/permissions_panel.html:62
 #: permissions/templates/misago/permissions_panel.html:81
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar user permissions"
 msgid "Permission"
-msgstr "Разрешения"
+msgstr "Разрешение"
 
 #: permissions/templates/misago/permissions_panel.html:57
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar user permissions"
 msgid "Category Permissions"
-msgstr "Разрешения"
+msgstr "Разрешения раздела"
 
 #: permissions/templates/misago/permissions_panel.html:76
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "debug toolbar user permissions"
 msgid "Moderator Permissions"
-msgstr "Разрешения"
+msgstr "Разрешения модератора"
 
 #: permissions/threads/checks.py:42
 msgctxt "threads permission error"
@@ -6513,12 +6346,9 @@ msgstr ""
 
 #: privatethreads/urls.py:26 privatethreads/urls.py:36
 #: privatethreads/urls.py:46 privatethreads/urls.py:56
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "private thread login required error"
 msgid "Sign in to view private threads"
-msgstr "Частные темы"
+msgstr "Войдите, чтобы просматривать приватные темы"
 
 #: privatethreads/validators.py:47
 msgctxt "new private thread owner validator"
@@ -6551,12 +6381,9 @@ msgid "This user limits who can add them to private threads."
 msgstr ""
 
 #: privatethreads/views/list.py:73
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads moderator"
 msgctxt "mark threads as read"
 msgid "Private threads marked as read"
-msgstr "Эксперт частных тем"
+msgstr "Приватные темы отмечены как прочитанные"
 
 #: privatethreads/views/members.py:88
 msgctxt "private thread members add view"
@@ -6569,12 +6396,9 @@ msgid "You can't add members to this thread."
 msgstr ""
 
 #: privatethreads/views/members.py:216
-#, fuzzy
-#| msgctxt "admin roles"
-#| msgid "Requested role does not exist."
 msgctxt "private thread member view"
 msgid "Member doesn't exist"
-msgstr "Запрашиваемая роль не существует."
+msgstr "Участник не существует"
 
 #: privatethreads/views/members.py:238
 msgctxt "add private thread owner change view"
@@ -9093,12 +8917,9 @@ msgid "Basic account settings"
 msgstr ""
 
 #: templates/misago/admin/users/edit.html:126
-#, fuzzy
-#| msgctxt "admin node"
-#| msgid "Permissions"
 msgctxt "admin user form"
 msgid "User permissions"
-msgstr "Разрешения"
+msgstr "Права пользователя"
 
 #: templates/misago/admin/users/edit.html:136
 #: templates/misago/admin/users/new.html:31
@@ -9477,12 +9298,9 @@ msgid "You don\\"
 msgstr ""
 
 #: templates/misago/categories_list/category_row_last_thread.html:33
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "category last reply"
 msgid "Hidden thread"
-msgstr "Частные темы"
+msgstr "Скрытая тема"
 
 #: templates/misago/categories_list/category_row_last_thread.html:74
 msgctxt "category last reply"
@@ -9499,20 +9317,20 @@ msgstr ""
 msgctxt "category stats"
 msgid "%(threads)s Thread"
 msgid_plural "%(threads)s Threads"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%(threads)s тема"
+msgstr[1] "%(threads)s темы"
+msgstr[2] "%(threads)s тем"
+msgstr[3] "%(threads)s темы"
 
 #: templates/misago/categories_list/category_row_stats.html:21
 #, python-format
 msgctxt "category stats"
 msgid "%(posts)s Post"
 msgid_plural "%(posts)s Posts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "%(posts)s сообщение"
+msgstr[1] "%(posts)s сообщения"
+msgstr[2] "%(posts)s сообщений"
+msgstr[3] "%(posts)s сообщения"
 
 #: templates/misago/category_thread_list/blankslate.html:6
 #: templates/misago/thread_list/blankslate.html:6
@@ -9521,6 +9339,8 @@ msgctxt "threads list blankslate"
 msgid ""
 "No threads matching the \"%(filter)s\" filter exist, or you can't see them."
 msgstr ""
+"Нет тем, соответствующих фильтру \"%(filter)s\", либо у вас нет к ним "
+"доступа."
 
 #: templates/misago/category_thread_list/blankslate.html:12
 #: templates/misago/private_thread_list/blankslate.html:12
@@ -9530,23 +9350,20 @@ msgstr ""
 #: templates/misago/thread_list/filters_noscript.html:12
 msgctxt "threads list filter"
 msgid "Clear filters"
-msgstr ""
+msgstr "Сбросить фильтры"
 
 #: templates/misago/category_thread_list/blankslate.html:17
 msgctxt "threads list blankslate"
 msgid ""
 "No threads have been started in this category yet, or you can't see them."
-msgstr ""
+msgstr "В этом разделе ещё нет тем, либо у вас нет к ним доступа."
 
 #: templates/misago/category_thread_list/blankslate.html:24
 #: templates/misago/private_thread_list/blankslate.html:24
 #: templates/misago/thread_list/blankslate.html:33
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads list"
 msgid "Start new thread"
-msgstr "Частные темы"
+msgstr "Создать тему"
 
 #: templates/misago/category_thread_list/gototop_toolbar.html:14
 #: templates/misago/gototop_toolbar.html:8
@@ -11136,12 +10953,9 @@ msgstr ""
 
 #: templates/misago/posting/members_form.html:6
 #: templates/misago/private_thread_members_add/form.html:6
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Member"
 msgctxt "posting users form"
 msgid "Members:"
-msgstr "Участник"
+msgstr "Участники:"
 
 #: templates/misago/posting/members_form.html:13
 #, python-format
@@ -11202,12 +11016,9 @@ msgstr ""
 #: templates/misago/private_thread_list/header.html:10
 #: templates/misago/private_thread_list/index.html:6
 #: templates/misago/private_thread_list/mark_as_read_page.html:6
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "private threads page"
 msgid "Private threads"
-msgstr "Частные темы"
+msgstr "Приватные темы"
 
 #: templates/misago/private_thread/members_add_modal.html:14
 msgctxt "private thread members add modal "
@@ -11237,12 +11048,9 @@ msgstr ""
 
 #: templates/misago/private_thread_edit/form.html:25
 #: templates/misago/thread_edit/form.html:25
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "edit thread post page"
 msgid "Edit thread"
-msgstr "Частные темы"
+msgstr "Редактировать тему"
 
 #: templates/misago/private_thread_edit/form.html:36
 #: templates/misago/private_thread_post_edit/form.html:36
@@ -11262,28 +11070,18 @@ msgstr ""
 
 #: templates/misago/private_thread_edit/index.html:6
 #: templates/misago/thread_edit/index.html:5
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "edit thread page"
 msgid "Edit thread"
-msgstr "Частные темы"
+msgstr "Редактировать тему"
 
 #: templates/misago/private_thread_leave/index.html:6
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "private thread leave page title"
 msgid "Leave thread"
-msgstr "Частные темы"
+msgstr "Покинуть тему"
 
-#: templates/misago/private_thread_leave/index.html:22
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "private thread leave confirm title"
 msgid "Leave thread"
-msgstr "Частные темы"
+msgstr "Покинуть тему"
 
 #: templates/misago/private_thread_leave/index.html:33
 msgctxt "private thread leave cancel btn"
@@ -11480,21 +11278,15 @@ msgstr ""
 
 #: templates/misago/private_thread_start/index.html:6
 #: templates/misago/private_thread_start/index.html:27
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "start thread page"
 msgid "Start new private thread"
-msgstr "Частные темы"
+msgstr "Создать новую приватную тему"
 
 #: templates/misago/private_thread_start/index.html:38
 #: templates/misago/thread_start/index.html:68
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "start thread submit btn"
 msgid "Start thread"
-msgstr "Частные темы"
+msgstr "Создать тему"
 
 #: templates/misago/private_thread_start/index.html:41
 #: templates/misago/thread_start/index.html:71
@@ -11746,7 +11538,7 @@ msgstr ""
 #: templates/misago/profile/threads.html:9
 msgctxt "user profile page threads"
 msgid "Threads"
-msgstr ""
+msgstr "Темы"
 
 #: templates/misago/profile/threads.html:20
 #, python-format
@@ -12034,12 +11826,9 @@ msgstr "Тем ещё нет, или у вас нет к ним доступа."
 
 #: templates/misago/thread_list/filters_dropdown.html:13
 #: templates/misago/thread_list/filters_dropdown.html:42
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads list filter"
 msgid "Filter threads"
-msgstr "Частные темы"
+msgstr "Фильтр тем"
 
 #: templates/misago/thread_list/header.html:10
 #: templates/misago/thread_list/index.html:11
@@ -12047,7 +11836,7 @@ msgstr "Частные темы"
 #: templates/misago/thread_list/moderation_page.html:6
 msgctxt "threads page"
 msgid "Threads"
-msgstr ""
+msgstr "Темы"
 
 #: templates/misago/thread_list/list_items.html:9
 msgctxt "threads list"
@@ -12099,12 +11888,9 @@ msgid "Select moderation action"
 msgstr ""
 
 #: templates/misago/thread_list/moderation_form.html:25
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads list moderation"
 msgid "Moderate threads"
-msgstr "Частные темы"
+msgstr "Модерировать темы"
 
 #: templates/misago/thread_list/paginator.html:12
 msgctxt "threads paginator"
@@ -12141,7 +11927,7 @@ msgstr ""
 #: templates/misago/thread_list/subcategories_dropdown.html:40
 msgctxt "threads list subcategories"
 msgid "Go to category"
-msgstr ""
+msgstr "К разделам"
 
 #: templates/misago/thread_list/toolbar.html:36
 #: templates/misago/thread_list/toolbar.html:46
@@ -12151,12 +11937,9 @@ msgstr ""
 
 #: templates/misago/thread_list/toolbar.html:65
 #: templates/misago/thread_list/toolbar.html:73
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads list toolbar"
 msgid "Start new thread"
-msgstr "Частные темы"
+msgstr "Создать тему"
 
 #: templates/misago/thread_list/toolbar.html:69
 msgctxt "threads list toolbar"
@@ -12181,12 +11964,9 @@ msgstr[3] ""
 
 #: templates/misago/thread_start/index.html:6
 #: templates/misago/thread_start/index.html:27
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "start thread page"
 msgid "Start new thread"
-msgstr "Частные темы"
+msgstr "Создать новую тему"
 
 #: templates/misago/thread_start/index.html:39
 msgctxt "posting form"
@@ -12199,12 +11979,9 @@ msgid "Start new thread in"
 msgstr ""
 
 #: templates/misago/thread_start_category_select/index.html:6
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "thread start category select page title"
 msgid "Start new thread"
-msgstr "Частные темы"
+msgstr "Создать новую тему"
 
 #: templates/misago/thread_start_category_select/modal.html:7
 msgctxt "thread start category select modal"
@@ -12764,28 +12541,19 @@ msgid "Disable"
 msgstr ""
 
 #: threads/filters.py:29
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads filter"
 msgid "Unread threads"
-msgstr "Частные темы"
+msgstr "Непрочитанные темы"
 
 #: threads/filters.py:67
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads filter"
 msgid "My threads"
-msgstr "Частные темы"
+msgstr "Мои темы"
 
 #: threads/filters.py:83
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "threads filter"
 msgid "Unapproved threads"
-msgstr "Частные темы"
+msgstr "Неодобренные темы"
 
 #: threads/models/attachmenttype.py:23
 msgctxt "attachment availability choice"
@@ -12909,7 +12677,7 @@ msgstr ""
 #: threads/views/list.py:410
 msgctxt "mark threads as read"
 msgid "Threads marked as read"
-msgstr ""
+msgstr "Тема отмечена прочитанной"
 
 #: threads/views/list.py:764
 msgctxt "mark threads as read"
@@ -12932,12 +12700,9 @@ msgid "You must be a moderator to view unapproved posts."
 msgstr ""
 
 #: threadupdates/actions.py:106
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "thread update action description"
 msgid "Approved thread"
-msgstr "Частные темы"
+msgstr "Тема одобрена"
 
 #: threadupdates/actions.py:114
 msgctxt "thread update action description"
@@ -12983,12 +12748,9 @@ msgid "Split this thread from %(context)s"
 msgstr ""
 
 #: threadupdates/actions.py:179
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "thread update action description"
 msgid "Hid thread"
-msgstr "Частные темы"
+msgstr "Тема скрыта"
 
 #: threadupdates/actions.py:186
 msgctxt "thread update action description"
@@ -13035,20 +12797,14 @@ msgid "Changed thread owner to %(context)s"
 msgstr ""
 
 #: threadupdates/actions.py:252
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "thread update action description"
 msgid "Joined thread"
-msgstr "Частные темы"
+msgstr "Присоединился к теме"
 
 #: threadupdates/actions.py:259
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Private threads"
 msgctxt "thread update action description"
 msgid "Left thread"
-msgstr "Частные темы"
+msgstr "Покинул тему"
 
 #: threadupdates/actions.py:266
 #, python-format
@@ -14260,7 +14016,7 @@ msgstr ""
 #: users/apps.py:51
 msgctxt "user profile page"
 msgid "Threads"
-msgstr ""
+msgstr "Темы"
 
 #: users/apps.py:57
 msgctxt "user profile page"
@@ -14501,36 +14257,24 @@ msgid "Admin"
 msgstr ""
 
 #: users/migrations/0028_default_groups.py:55
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "default user group"
 msgid "Moderators"
-msgstr "Эксперт"
+msgstr "Модераторы"
 
 #: users/migrations/0028_default_groups.py:57
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Moderator"
 msgctxt "default user group"
 msgid "Moderator"
-msgstr "Эксперт"
+msgstr "Модератор"
 
 #: users/migrations/0028_default_groups.py:90
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Member"
 msgctxt "default user group"
 msgid "Members"
-msgstr "Участник"
+msgstr "Участники"
 
 #: users/migrations/0028_default_groups.py:124
-#, fuzzy
-#| msgctxt "role name"
-#| msgid "Guest"
 msgctxt "default user group"
 msgid "Guests"
-msgstr "Гость"
+msgstr "Гости"
 
 #: users/models/ban.py:71
 msgctxt "ban type choice"
