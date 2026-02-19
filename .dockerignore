@@ -3,9 +3,7 @@ dist/
 docs/
 env/
 venv/
-misago-admin/
 node_modules/
-frontend/
 
 .DS_Store
 thumbs.db

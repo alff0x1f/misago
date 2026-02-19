@@ -102,6 +102,17 @@ set -a; source docker-services.env; set +a
 
 Файл `docker-services.env` содержит тот же набор переменных, что и docker-compose (POSTGRES_*, `CELERY_BROKER_URL`, `EMAIL_HOST`, `EMAIL_PORT`).
 
+### Production Docker image
+
+If you want to build a production-ready container without relying on [`misago-docker`](https://github.com/rafalp/misago-docker), use the provided multi-stage `Dockerfile.prod` together with the root `Makefile`.
+
+```
+make prod-build CONTAINER_ENGINE=podman REGISTRY=my.registry IMAGE_NAME=sputnik TAG=1.0.0
+make prod-push  CONTAINER_ENGINE=podman REGISTRY=my.registry IMAGE_NAME=sputnik TAG=1.0.0
+```
+
+Both targets accept `CONTAINER_ENGINE` (`docker` by default, set to `podman` if needed), `REGISTRY`, `IMAGE_NAME`, `TAG`, and `PROD_DOCKERFILE` overrides. The image expects all Django/DB secrets via environment variables (`DJANGO_SECRET_KEY`, `DJANGO_ALLOWED_HOSTS`, `POSTGRES_*`, etc.) and runs `gunicorn` by default. After pushing, deploy it to your infrastructure and run `python manage.py migrate`/`createsuperuser` once per environment.
+
 ### Перевод
 
 Извлечение строк для перевода:

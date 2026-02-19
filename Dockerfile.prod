@@ -1,0 +1,78 @@
+# Multi-stage Dockerfile for production-ready Misago image
+# Usage example:
+#   docker build -f Dockerfile.prod -t my-registry/misago:latest .
+
+##########
+# Python #
+##########
+FROM python:3.12-slim-bookworm AS python-build
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends build-essential libffi-dev libpq-dev libssl-dev \
+        libjpeg62-turbo-dev libopenjp2-7-dev zlib1g-dev gettext && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt ./
+
+RUN pip install --upgrade pip && \
+    pip install --prefix=/install --no-warn-script-location -r requirements.txt
+
+##########
+# Assets #
+##########
+FROM node:20-bookworm AS assets-build
+
+WORKDIR /app
+
+COPY frontend/package*.json frontend/
+RUN cd frontend && npm ci
+
+COPY misago-admin/package*.json misago-admin/
+RUN cd misago-admin && npm ci
+
+COPY . .
+
+RUN cd frontend && npm run build
+RUN cd misago-admin && npm run build
+
+#########
+# Final #
+#########
+FROM python:3.12-slim-bookworm AS runtime
+
+ARG USER=misago
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    MISAGO_PLUGINS=/app/plugins \
+    DJANGO_SETTINGS_MODULE=devproject.settings_prod \
+    ENFORCE_HTTPS_HEADERS=1
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libffi8 libpq5 libssl3 libjpeg62-turbo \
+        libopenjp2-7 locales gettext && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY --from=python-build /install /usr/local
+
+COPY . .
+
+COPY --from=assets-build /app/misago/static /app/misago/static
+
+RUN groupadd -r "${USER}" && useradd -r -g "${USER}" -d /app "${USER}"
+
+RUN mkdir -p /app/staticfiles /app/media && \
+    DJANGO_SECRET_KEY=collectstatic DJANGO_ALLOWED_HOSTS=collectstatic python manage.py collectstatic --noinput
+
+EXPOSE 8000
+
+USER "${USER}"
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "4", "devproject.wsgi:application"]
