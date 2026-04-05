@@ -129,6 +129,82 @@ failed to solve: process "/bin/sh -c ./dev bootstrap_plugins" did not complete s
 This error is caused by the `dev` file having its line endings converted from Unix format (`LF`) to Windows (`CRLF`) by git when you cloned the repository. To fix this, disable the automatic conversion of line endings in your git configuration and then clone the repository again.
 
 
+Сборка и публикация production-образа
+--------------------------------------
+
+В репозитории есть `Dockerfile.prod` — production-образ на базе `python:3.12-slim-bookworm`, использующий Gunicorn вместо dev-сервера.
+
+Для сборки и публикации через [Podman](https://podman.io/) используется `Makefile`.
+
+### Быстрый старт
+
+```sh
+# Залогиниться в свой registry
+make login REGISTRY=registry.example.com
+
+# Собрать и запушить образ
+make build-push REGISTRY=registry.example.com TAG=1.0.0
+
+# Тег из git-коммита
+make build-push REGISTRY=registry.example.com TAG=$(git rev-parse --short HEAD)
+```
+
+Отдельные команды:
+
+```sh
+make build REGISTRY=registry.example.com TAG=1.0.0   # только сборка
+make push  REGISTRY=registry.example.com TAG=1.0.0   # только пуш
+```
+
+По умолчанию используется `podman`. Если нужен Docker — переопределите переменную:
+
+```sh
+make build-push REGISTRY=registry.example.com PODMAN=docker
+```
+
+### Переменные окружения
+
+При запуске контейнера необходимо передать:
+
+| Переменная | Описание |
+|---|---|
+| `DJANGO_SECRET_KEY` | Секретный ключ Django (обязательно) |
+| `DJANGO_ALLOWED_HOSTS` | Список хостов через запятую, например `forum.example.com` |
+| `POSTGRES_HOST` | Адрес PostgreSQL |
+| `POSTGRES_DB` | Имя базы данных |
+| `POSTGRES_USER` | Пользователь БД |
+| `POSTGRES_PASSWORD` | Пароль БД |
+| `REDIS_URL` | URL Redis для кэша (default: `redis://redis:6379/1`) |
+| `CELERY_BROKER_URL` | URL Redis для Celery (default: `redis://redis:6379/0`) |
+| `EMAIL_HOST` | SMTP-сервер |
+| `EMAIL_PORT` | SMTP-порт (default: `25`) |
+| `EMAIL_HOST_USER` | SMTP-логин |
+| `EMAIL_HOST_PASSWORD` | SMTP-пароль |
+| `EMAIL_USE_TLS` | Включить TLS (`1` / `true`) |
+| `DEFAULT_FROM_EMAIL` | Адрес отправителя |
+
+Пример запуска:
+
+```sh
+podman run -d \
+  -e DJANGO_SECRET_KEY=your-secret-key \
+  -e DJANGO_ALLOWED_HOSTS=forum.example.com \
+  -e POSTGRES_HOST=db.example.com \
+  -e POSTGRES_DB=misago \
+  -e POSTGRES_USER=misago \
+  -e POSTGRES_PASSWORD=secret \
+  -e REDIS_URL=redis://redis:6379/1 \
+  -p 8000:8000 \
+  registry.example.com/misago:1.0.0
+```
+
+После первого запуска не забудьте выполнить миграции:
+
+```sh
+podman run --rm -e ... registry.example.com/misago:1.0.0 python manage.py migrate
+```
+
+
 Providing feedback and contributing
 -----------------------------------
 

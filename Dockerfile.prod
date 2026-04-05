@@ -1,0 +1,37 @@
+FROM python:3.12-slim-bookworm
+
+ENV PYTHONUNBUFFERED=1
+ENV IN_MISAGO_DOCKER=1
+ENV MISAGO_PLUGINS=/app/plugins
+ENV DJANGO_SETTINGS_MODULE=devproject.prod_settings
+
+# Runtime dependencies only (no vim, no pip-tools, etc.)
+RUN apt-get update && apt-get install -y \
+    libffi8 \
+    libssl3 \
+    libjpeg62-turbo \
+    libopenjp2-7 \
+    locales \
+    gettext \
+    postgresql-client-15 \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt gunicorn
+
+COPY . .
+
+# Collect static files (dummy secret key — not used at runtime)
+RUN DJANGO_SECRET_KEY=build-time-dummy \
+    DJANGO_ALLOWED_HOSTS=localhost \
+    python manage.py collectstatic --noinput
+
+EXPOSE 8000
+
+CMD ["gunicorn", "devproject.wsgi:application", \
+     "--bind", "0.0.0.0:8000", \
+     "--workers", "4", \
+     "--timeout", "60"]
