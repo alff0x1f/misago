@@ -8,7 +8,7 @@ FULL_IMAGE = $(REGISTRY)/$(IMAGE):$(TAG)
 .PHONY: build push build-push login
 
 build:
-	$(PODMAN) build -f Dockerfile.prod -t $(FULL_IMAGE) .
+	$(PODMAN) build -f Dockerfile.prod -t $(FULL_IMAGE) --platform linux/amd64 .
 
 push:
 	$(PODMAN) push $(FULL_IMAGE)
