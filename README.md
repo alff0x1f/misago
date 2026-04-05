@@ -204,6 +204,51 @@ podman run -d \
 podman run --rm -e ... registry.example.com/misago:1.0.0 python manage.py migrate
 ```
 
+> **Примечание:** при использовании `docker-compose.prod.yml` миграции выполняются автоматически при старте контейнера.
+
+
+### Деплой на сервер
+
+Папка `deploy/` содержит готовый к деплою production-стек. Её достаточно скопировать на сервер — исходный код не нужен, образ уже в registry.
+
+**Структура:**
+```
+deploy/
+├── docker-compose.yml      # postgres, redis, misago, celery, cron, nginx
+├── nginx.conf              # отдаёт static/media, проксирует остальное на gunicorn
+└── config/
+    └── misago.env.example  # шаблон переменных окружения
+```
+
+**Запуск на сервере:**
+
+```sh
+# 1. Скопировать папку на сервер
+scp -r deploy/ user@server:/opt/misago
+
+# 2. На сервере
+cd /opt/misago
+
+# 3. Создать и заполнить файл с переменными окружения
+cp config/misago.env.example config/misago.env
+nano config/misago.env
+
+# 4. Создать .env с адресом образа и паролем БД
+cat > .env <<EOF
+MISAGO_IMAGE=registry.lab.tk-sputnik.org/sputnik:latest
+POSTGRES_PASSWORD=секретный-пароль
+EOF
+
+# 5. Запустить
+docker compose up -d
+```
+
+При первом старте `misago` автоматически применит миграции и соберёт статику. Для создания учётной записи администратора:
+
+```sh
+docker compose exec misago python manage.py createsuperuser
+```
+
 
 Providing feedback and contributing
 -----------------------------------
