@@ -136,6 +136,17 @@ This error is caused by the `dev` file having its line endings converted from Un
 
 Для сборки и публикации через [Podman](https://podman.io/) используется `Makefile`.
 
+### Фронтенд и сборка образа
+
+Собранные ассеты фронтенда (JS, CSS, шрифты) уже находятся в репозитории в `misago/static/misago/` и **не требуют отдельной сборки** при билде Docker-образа — `collectstatic` подхватывает их автоматически.
+
+Пересобирать фронтенд нужно только при изменении исходников в папке `frontend/`:
+
+```sh
+make frontend              # только сборка фронтенда (npm install + npm run build)
+make frontend-build-push   # полный цикл: фронтенд → Docker-образ → пуш в registry
+```
+
 ### Быстрый старт
 
 ```sh
